@@ -175,7 +175,7 @@ app.use((req,res,next)=>{
     res.locals.currentUser=req.user;
     res.locals.success=req.flash('success');
      res.locals.error=req.flash('error');
-
+res.locals.mapTilerApiKey = process.env.MAPTILER_API_KEY;
     next();
 })
 app.get('/fakeUser',async(req,res)=>{
