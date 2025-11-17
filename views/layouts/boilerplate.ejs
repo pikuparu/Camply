@@ -31,11 +31,20 @@
     <!-- bs-custom-file JS -->
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
 
-    <!-- MapTiler JS MUST BE ABOVE YOUR JS FILES -->
+    <!-- MapTiler JS -->
     <script src="https://cdn.maptiler.com/maptiler-sdk-js/v1.12.1/maptiler-sdk.umd.min.js"></script>
 
-    <!-- Your JS files (AFTER MapTiler JS) -->
+    <!-- Global JS -->
     <script src="/javascript/validateForms.js"></script>
-    <script src="/javascript/showPageMap.js"></script>
+
+    <!-- Load Only When Needed -->
+    <% if (typeof campground !== 'undefined') { %>
+        <script src="/javascript/showPageMap.js"></script>
+    <% } %>
+
+    <% if (typeof campgrounds !== 'undefined') { %>
+        <script src="/javascript/clusterMap.js"></script>
+    <% } %>
+
 </body>
 </html>
