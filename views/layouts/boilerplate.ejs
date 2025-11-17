@@ -37,5 +37,15 @@
     <!-- MapTiler SDK (loaded once!) -->
     <script src="https://cdn.maptiler.com/maptiler-sdk-js/v1.12.1/maptiler-sdk.umd.min.js"></script>
 
+<% if (typeof campground !== 'undefined') { %>
+  <script src="/javascript/showPageMap.js"></script>
+<% } %>
+
+<!-- Load clusterMap ONLY when `campgrounds` variable exists (defined in index.ejs above) -->
+<% if (typeof campgrounds !== 'undefined') { %>
+  <script src="/javascript/clusterMap.js"></script>
+<% } %>
+
+
 </body>
 </html>
