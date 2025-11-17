@@ -16,14 +16,15 @@
 </head>
 
 <body class="d-flex flex-column vh-100">
-    <%-include('../partials/navbar.ejs')%>
+
+    <%- include('../partials/navbar.ejs') %>
 
     <main class="container mt-5 flex-grow-1">
-      <%-include('../partials/flash.ejs')%>
-      <%- body %>
+        <%- include('../partials/flash.ejs') %>
+        <%- body %>
     </main>
 
-    <%-include('../partials/footer.ejs')%>
+    <%- include('../partials/footer.ejs') %>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -31,19 +32,35 @@
     <!-- bs-custom-file JS -->
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
 
-    <!-- MapTiler JS -->
-    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v1.12.1/maptiler-sdk.umd.min.js"></script>
-
-    <!-- Global JS -->
+    <!-- Your global validation JS -->
     <script src="/javascript/validateForms.js"></script>
 
-    <!-- Load Only When Needed -->
-    <% if (typeof campground !== 'undefined') { %>
-        <script src="/javascript/showPageMap.js"></script>
+    <!-- 1️⃣ Load MapTiler SDK before your JS -->
+    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v1.12.1/maptiler-sdk.umd.min.js"></script>
+
+    <!-- 2️⃣ Make backend variables available to JS -->
+    <% if (typeof mapTilerApiKey !== "undefined") { %>
+    <script>
+        const maptilerApiKey = "<%= mapTilerApiKey %>";
+    </script>
     <% } %>
 
-    <% if (typeof campgrounds !== 'undefined') { %>
-        <script src="/javascript/clusterMap.js"></script>
+    <% if (typeof campground !== "undefined") { %>
+    <script>
+        const campground = <%- JSON.stringify(campground) %>;
+    </script>
+
+    <!-- LOAD SHOW MAP ONLY ON SHOW PAGE -->
+    <script src="/javascript/showPageMap.js"></script>
+    <% } %>
+
+    <% if (typeof campgrounds !== "undefined") { %>
+    <script>
+        const campgrounds = <%- JSON.stringify(campgrounds) %>;
+    </script>
+
+    <!-- LOAD CLUSTER MAP ONLY ON INDEX PAGE -->
+    <script src="/javascript/clusterMap.js"></script>
     <% } %>
 
 </body>
