@@ -48,7 +48,8 @@ module.exports.showCampground=async(req,res)=>{
         return res.redirect('/campgrounds');
     }
     
-    res.render('campgrounds/show.ejs',{campground          
+    res.render('campgrounds/show.ejs',{campground,
+        mapTilerApiKey:process.env.MAPTILER_API_KEY          
     });
 }
 
