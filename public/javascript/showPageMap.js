@@ -1,6 +1,6 @@
 maptilersdk.config.apiKey = maptilerApiKey;
 
-const map = new maptilersdk.Map({
+const showPageMap = new maptilersdk.Map({
     container: 'map',
     style: maptilersdk.MapStyle.BRIGHT,
     center: campground.geometry.coordinates, // starting position [lng, lat]
@@ -15,4 +15,4 @@ new maptilersdk.Marker()
                 `<h3>${campground.title}</h3><p>${campground.location}</p>`
             )
     )
-    .addTo(map)
+    .addTo(showPageMap)
