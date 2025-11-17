@@ -36,6 +36,7 @@
     <% } %>
 </div>
 
+<!-- Inject variables ONLY for index page -->
 <script>
   const maptilerApiKey = "<%- process.env.MAPTILER_API_KEY %>";
 
@@ -51,6 +52,5 @@
   };
 </script>
 
+<!-- Load cluster map JS ONLY here -->
 <script src="/javascript/clusterMap.js"></script>
-
-    
