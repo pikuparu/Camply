@@ -49,7 +49,7 @@ module.exports.showCampground=async(req,res)=>{
     }
     
     res.render('campgrounds/show.ejs',{campground,
-        mapTilerApiKey:process.env.MAPTILER_API_KEY          
+        maptilerApiKey:process.env.MAPTILER_API_KEY          
     });
 }
 
